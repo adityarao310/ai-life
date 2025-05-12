@@ -294,54 +294,54 @@ pre.w-code-block code {
   display: contents;
 }
 
-.w-webflow-badge, .w-webflow-badge > img {
-  box-sizing: unset;
-  width: unset;
-  height: unset;
-  max-height: unset;
-  max-width: unset;
-  min-height: unset;
-  min-width: unset;
-  margin: unset;
-  padding: unset;
-  float: unset;
-  clear: unset;
-  border: unset;
-  border-radius: unset;
-  background: unset;
-  background-image: unset;
-  background-position: unset;
-  background-size: unset;
-  background-repeat: unset;
-  background-origin: unset;
-  background-clip: unset;
-  background-attachment: unset;
-  background-color: unset;
-  box-shadow: unset;
-  transform: unset;
-  direction: unset;
-  font-family: unset;
-  font-weight: unset;
-  color: unset;
-  font-size: unset;
-  line-height: unset;
-  font-style: unset;
-  font-variant: unset;
-  text-align: unset;
-  letter-spacing: unset;
-  -webkit-text-decoration: unset;
-  text-decoration: unset;
-  text-indent: unset;
-  text-transform: unset;
-  list-style-type: unset;
-  text-shadow: unset;
-  vertical-align: unset;
-  cursor: unset;
-  white-space: unset;
-  word-break: unset;
-  word-spacing: unset;
-  word-wrap: unset;
-  transition: unset;
+.w-webflow-badge, .w-webflow-badge * {
+  z-index: auto;
+  visibility: visible;
+  box-sizing: border-box;
+  float: none;
+  clear: none;
+  box-shadow: none;
+  opacity: 1;
+  direction: ltr;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-style: inherit;
+  font-variant: inherit;
+  text-align: inherit;
+  letter-spacing: inherit;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-indent: 0;
+  text-transform: inherit;
+  text-shadow: none;
+  font-smoothing: auto;
+  vertical-align: baseline;
+  cursor: inherit;
+  white-space: inherit;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  background: none;
+  border: 0 #0000;
+  border-radius: 0;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: disc;
+  transition: none;
+  display: block;
+  position: static;
+  inset: auto;
+  overflow: visible;
+  transform: none;
 }
 
 .w-webflow-badge {
@@ -349,10 +349,9 @@ pre.w-code-block code {
   cursor: pointer;
   box-shadow: 0 0 0 1px #0000001a, 0 1px 3px #0000001a;
   visibility: visible !important;
-  opacity: 1 !important;
   z-index: 2147483647 !important;
   color: #aaadb0 !important;
-  overflow: unset !important;
+  opacity: 1 !important;
   background-color: #fff !important;
   border-radius: 3px !important;
   width: auto !important;
@@ -365,12 +364,12 @@ pre.w-code-block code {
   display: inline-block !important;
   position: fixed !important;
   inset: auto 12px 12px auto !important;
+  overflow: visible !important;
   transform: none !important;
 }
 
 .w-webflow-badge > img {
-  position: unset;
-  visibility: unset !important;
+  visibility: visible !important;
   opacity: 1 !important;
   vertical-align: middle !important;
   display: inline-block !important;
@@ -2046,6 +2045,14 @@ textarea.w-input, textarea.w-select {
   display: grid;
 }
 
+.w-code-component > * {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 :root {
   --black: #071839;
   --primary: #122c5f;
@@ -2208,8 +2215,8 @@ img {
 }
 
 .logo-symbol {
-  width: 18px;
-  height: 18px;
+  width: 11px;
+  height: 11px;
 }
 
 .medium-uppercase-m {
@@ -2680,10 +2687,6 @@ img {
   transform: rotate(180deg);
 }
 
-.section.section-top-padding-small {
-  padding-top: 80px;
-}
-
 .section-top-padding {
   padding-top: 200px;
 }
@@ -3102,7 +3105,9 @@ img {
   background-color: var(--white);
   border-radius: 8px;
   flex-flow: column;
-  padding: 32px 24px;
+  padding-top: 32px;
+  padding-left: 24px;
+  padding-right: 24px;
   display: flex;
   position: relative;
 }
@@ -3945,7 +3950,7 @@ img {
 .input.select {
   -webkit-appearance: none;
   appearance: none;
-  background-image: url("https://cdn.prod.website-files.com/681e5b5d510f92f5bc6ad518/681e5b5d510f92f5bc6ad59b_Chevron%20Down.svg");
+  background-image: url("https://cdn.prod.website-files.com/66e2098b30674f8759b7a0c8/66e2098b30674f8759b7a13b_Chevron%20Down.svg");
   background-position: 96%;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -5039,10 +5044,6 @@ img {
     align-items: stretch;
   }
 
-  .section.section-top-padding-small {
-    padding-top: 80px;
-  }
-
   .wrapper.project-hero-button {
     flex-flow: column;
     display: flex;
@@ -5076,7 +5077,7 @@ img {
   }
 }
 
-#w-node-eeada652-cbc8-2cf5-b94d-53cd328de67e-bc6ad556, #w-node-_525a0b52-4ca3-38fc-57ae-3b754682f733-4682f722, #w-node-_23a7c60c-9803-08eb-a25b-f284b211af2a-b211af21, #w-node-_23a7c60c-9803-08eb-a25b-f284b211af2b-b211af21 {
+#w-node-eeada652-cbc8-2cf5-b94d-53cd328de67e-59b7a0bc, #w-node-_525a0b52-4ca3-38fc-57ae-3b754682f733-4682f722, #w-node-_23a7c60c-9803-08eb-a25b-f284b211af2a-b211af21, #w-node-_23a7c60c-9803-08eb-a25b-f284b211af2b-b211af21 {
   grid-area: span 1 / span 3 / span 1 / span 3;
 }
 
@@ -5084,12 +5085,84 @@ img {
   grid-area: span 1 / span 2 / span 1 / span 2;
 }
 
-#w-node-cc9666d2-5229-804a-f11a-2eb715ea61ea-bc6ad55c {
+#w-node-_2121e502-e0e4-33ea-5aa7-0820802c265d-59b7a0bd, #w-node-f06b96a5-4e14-24bb-ca68-590b0a547799-59b7a0be, #w-node-_92c0b60c-7a13-48b8-4af1-e642b3c8426b-59b7a0bf, #w-node-b5049164-82d4-40f4-05cf-47be9e17a810-59b7a0c0, #w-node-_11e2e3b6-dd4a-dc6a-17a3-e98bf209c7c6-59b7a0c0, #w-node-bfe70dac-52f1-3200-1a65-f108f4aab8df-59b7a0c1 {
   grid-area: span 1 / span 3 / span 1 / span 3;
 }
 
+#w-node-bfe70dac-52f1-3200-1a65-f108f4aab8e1-59b7a0c1 {
+  align-self: end;
+}
+
+#w-node-cc9666d2-5229-804a-f11a-2eb715ea61ea-59b7a0c2, #w-node-_9cbd576a-3b70-da8a-8779-23f80f234f82-59b7a0c4 {
+  grid-area: span 1 / span 3 / span 1 / span 3;
+}
+
+#w-node-_9cbd576a-3b70-da8a-8779-23f80f234f84-59b7a0c4 {
+  align-self: end;
+}
+
+#w-node-ad7f3a46-0983-242d-716a-4417fb0d98f7-59b7a0c5 {
+  grid-area: span 1 / span 3 / span 1 / span 3;
+}
+
+#w-node-ad7f3a46-0983-242d-716a-4417fb0d98fb-59b7a0c5 {
+  align-self: end;
+}
+
+#w-node-_1b573886-29b3-2f30-28d6-99bc5ed1dd75-59b7a0c6 {
+  grid-area: span 1 / span 3 / span 1 / span 3;
+}
+
+#w-node-_1b573886-29b3-2f30-28d6-99bc5ed1dd79-59b7a0c6 {
+  align-self: end;
+}
+
 @media screen and (max-width: 991px) {
-  #w-node-_525a0b52-4ca3-38fc-57ae-3b754682f727-4682f722 {
+  #w-node-_525a0b52-4ca3-38fc-57ae-3b754682f727-4682f722, #w-node-_11e2e3b6-dd4a-dc6a-17a3-e98bf209c7c6-59b7a0c0 {
+    grid-area: span 1 / span 2 / span 1 / span 2;
+  }
+
+  #w-node-_0a4fca7b-2a40-e7f6-5be3-2de3c7a84bc1-59b7a0c6, #w-node-d74096d4-93e5-0a87-41eb-68764d0afbe9-59b7a0c6 {
+    grid-area: span 1 / span 3 / span 1 / span 3;
+  }
+
+  #w-node-_121abfac-80c5-3f04-fd17-b8e676e35d76-59b7a0c6 {
+    grid-area: span 1 / span 6 / span 1 / span 6;
+  }
+
+  #w-node-_0fc20a1c-c3e8-8746-eda7-6d3a1c1c8017-59b7a0c6, #w-node-_8bf0fa38-2720-109d-8d6e-bd05a426dfda-59b7a0c6, #w-node-_7d740268-8946-c80f-a445-9af895345271-59b7a0c6 {
+    grid-area: span 1 / span 2 / span 1 / span 2;
+  }
+
+  #w-node-_0e352b24-0cb3-9ec9-2363-4449e1664faa-59b7a0c6, #w-node-_214f5c32-31c5-d7c5-2d57-e031a0b288bc-59b7a0c6 {
+    grid-area: span 1 / span 3 / span 1 / span 3;
+  }
+
+  #w-node-_08a7be88-4dda-fa19-9a77-5c54e85f2cd3-59b7a0c6, #w-node-_2b9df953-8271-ccf9-5156-b532ca9c37ba-59b7a0c6, #w-node-a7e4599a-a721-4c54-ffc9-ee75fb4a287b-59b7a0c6 {
+    grid-area: span 1 / span 2 / span 1 / span 2;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #w-node-_11e2e3b6-dd4a-dc6a-17a3-e98bf209c7c6-59b7a0c0 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #w-node-_0a4fca7b-2a40-e7f6-5be3-2de3c7a84bc1-59b7a0c6, #w-node-d74096d4-93e5-0a87-41eb-68764d0afbe9-59b7a0c6 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+  }
+
+  #w-node-_121abfac-80c5-3f04-fd17-b8e676e35d76-59b7a0c6, #w-node-_0fc20a1c-c3e8-8746-eda7-6d3a1c1c8017-59b7a0c6 {
+    grid-area: span 1 / span 2 / span 1 / span 2;
+  }
+
+  #w-node-_8bf0fa38-2720-109d-8d6e-bd05a426dfda-59b7a0c6, #w-node-_7d740268-8946-c80f-a445-9af895345271-59b7a0c6, #w-node-_0e352b24-0cb3-9ec9-2363-4449e1664faa-59b7a0c6, #w-node-_214f5c32-31c5-d7c5-2d57-e031a0b288bc-59b7a0c6, #w-node-_08a7be88-4dda-fa19-9a77-5c54e85f2cd3-59b7a0c6, #w-node-_2b9df953-8271-ccf9-5156-b532ca9c37ba-59b7a0c6 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+  }
+
+  #w-node-a7e4599a-a721-4c54-ffc9-ee75fb4a287b-59b7a0c6 {
     grid-area: span 1 / span 2 / span 1 / span 2;
   }
 }
