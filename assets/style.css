@@ -4643,7 +4643,7 @@ img {
   }
 
   .service-card {
-    height: 480px;
+    /* height: 480px; */
     /* padding-top: 48px; */
     /* padding-bottom: 48px; */
   }
