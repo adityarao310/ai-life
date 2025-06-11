@@ -41,11 +41,11 @@ freepik__static-camera-a-woman-adorned-in-a-traditional-sar__57791.mov
 */
 
 const portfolioImages = [
-    "1.mp4",
+    // "1.mp4",
     "enhance__70794.png",
   
-  "freepik__enhance__54607.png",
-  "upscaled_Photoshoot 2.png",
+  // "freepik__enhance__54607.png",
+  // "upscaled_Photoshoot 2.png",
 
 
 
