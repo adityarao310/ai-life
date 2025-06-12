@@ -2525,6 +2525,12 @@ img {
   background-color: #f2f2f200;
 }
 
+.testimonial_wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+}
+
 .button-text-wrapper {
   perspective: 250px;
   flex-flow: column;
@@ -4833,7 +4839,7 @@ img {
   }
 
   .project-item, .project-item:nth-child(2n) {
-    flex-flow: column;
+    flex-flow: column-reverse;
   }
 
   .project-info-card {
@@ -5183,4 +5189,34 @@ img {
   left: auto;         /* Reset absolute positioning helper */
   /* inset: auto; /* Reset from Webflow if it was there */
   /* z-index might not be needed here anymore */
+}
+
+.client-photo-img {
+  width: 60px;
+  height: 60px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-right: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.client_photo {
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+}
+
+.testimonial_wrapper_text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
 }
