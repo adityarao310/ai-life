@@ -92,6 +92,8 @@ const portfolioImages = [
 // Function to insert images and videos into the grid
 function insertPortfolioItems() {
   const grid = document.querySelector('.services-grid');
+  if (!grid) return; // Exit if grid doesn't exist on this page
+  
   portfolioImages.forEach(file => {
     const isVideo = file.endsWith('.mp4') || file.endsWith('.mov');
     const item = document.createElement('div');
@@ -106,3 +108,65 @@ function insertPortfolioItems() {
 
 // Call the function to insert items
 insertPortfolioItems();
+
+// FAQ Accordion functionality
+function initFAQAccordion() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', function() {
+      const faqItem = this.closest('.faq-item');
+      const faqAnswer = faqItem.querySelector('.faq-answer');
+      const horizontalLine = faqItem.querySelector('.icon-horizontal-line');
+      const isOpen = faqAnswer.style.height !== '0px' && faqAnswer.style.height !== '';
+      
+      // Close all other FAQ items
+      faqQuestions.forEach(otherQuestion => {
+        if (otherQuestion !== question) {
+          const otherItem = otherQuestion.closest('.faq-item');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          const otherHorizontalLine = otherItem.querySelector('.icon-horizontal-line');
+          
+          otherAnswer.style.height = '0px';
+          if (otherHorizontalLine) {
+            otherHorizontalLine.style.transform = 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)';
+          }
+        }
+      });
+      
+      // Toggle current FAQ item
+      if (isOpen) {
+        faqAnswer.style.height = '0px';
+        if (horizontalLine) {
+          horizontalLine.style.transform = 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)';
+        }
+      } else {
+        faqAnswer.style.height = faqAnswer.scrollHeight + 'px';
+        if (horizontalLine) {
+          horizontalLine.style.transform = 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(90deg) skew(0deg, 0deg)';
+        }
+      }
+    });
+  });
+}
+
+// Smooth scroll for anchor links
+function initSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+// Initialize FAQ accordion and smooth scrolling when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  initFAQAccordion();
+  initSmoothScrolling();
+});
