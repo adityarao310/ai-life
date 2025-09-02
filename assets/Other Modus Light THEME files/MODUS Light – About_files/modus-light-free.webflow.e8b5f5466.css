@@ -176,6 +176,7 @@ td, th {
 }
 
 [class^="w-icon-"], [class*=" w-icon-"] {
+  speak: none;
   font-variant: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
@@ -293,54 +294,54 @@ pre.w-code-block code {
   display: contents;
 }
 
-.w-webflow-badge, .w-webflow-badge > img {
-  box-sizing: unset;
-  width: unset;
-  height: unset;
-  max-height: unset;
-  max-width: unset;
-  min-height: unset;
-  min-width: unset;
-  margin: unset;
-  padding: unset;
-  float: unset;
-  clear: unset;
-  border: unset;
-  border-radius: unset;
-  background: unset;
-  background-image: unset;
-  background-position: unset;
-  background-size: unset;
-  background-repeat: unset;
-  background-origin: unset;
-  background-clip: unset;
-  background-attachment: unset;
-  background-color: unset;
-  box-shadow: unset;
-  transform: unset;
-  direction: unset;
-  font-family: unset;
-  font-weight: unset;
-  color: unset;
-  font-size: unset;
-  line-height: unset;
-  font-style: unset;
-  font-variant: unset;
-  text-align: unset;
-  letter-spacing: unset;
-  -webkit-text-decoration: unset;
-  text-decoration: unset;
-  text-indent: unset;
-  text-transform: unset;
-  list-style-type: unset;
-  text-shadow: unset;
-  vertical-align: unset;
-  cursor: unset;
-  white-space: unset;
-  word-break: unset;
-  word-spacing: unset;
-  word-wrap: unset;
-  transition: unset;
+.w-webflow-badge, .w-webflow-badge * {
+  z-index: auto;
+  visibility: visible;
+  box-sizing: border-box;
+  float: none;
+  clear: none;
+  box-shadow: none;
+  opacity: 1;
+  direction: ltr;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-style: inherit;
+  font-variant: inherit;
+  text-align: inherit;
+  letter-spacing: inherit;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-indent: 0;
+  text-transform: inherit;
+  text-shadow: none;
+  font-smoothing: auto;
+  vertical-align: baseline;
+  cursor: inherit;
+  white-space: inherit;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  background: none;
+  border: 0 #0000;
+  border-radius: 0;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: disc;
+  transition: none;
+  display: block;
+  position: static;
+  inset: auto;
+  overflow: visible;
+  transform: none;
 }
 
 .w-webflow-badge {
@@ -348,10 +349,9 @@ pre.w-code-block code {
   cursor: pointer;
   box-shadow: 0 0 0 1px #0000001a, 0 1px 3px #0000001a;
   visibility: visible !important;
-  opacity: 1 !important;
   z-index: 2147483647 !important;
   color: #aaadb0 !important;
-  overflow: unset !important;
+  opacity: 1 !important;
   background-color: #fff !important;
   border-radius: 3px !important;
   width: auto !important;
@@ -364,12 +364,12 @@ pre.w-code-block code {
   display: inline-block !important;
   position: fixed !important;
   inset: auto 12px 12px auto !important;
+  overflow: visible !important;
   transform: none !important;
 }
 
 .w-webflow-badge > img {
-  position: unset;
-  visibility: unset !important;
+  visibility: visible !important;
   opacity: 1 !important;
   vertical-align: middle !important;
   display: inline-block !important;
@@ -442,71 +442,6 @@ ul, ol {
   margin-top: 0;
   margin-bottom: 10px;
   padding-left: 40px;
-}
-
-/* Tab Navigation */
-.tab-buttons {
-  display: flex;
-  gap: 10px; /* Space between buttons */
-  margin-bottom: 24px; /* Spacing before content */
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-  justify-content: center; /* Center tabs if they don't fill width */
-}
-
-.tab-button {
-  padding: 10px 20px;
-  cursor: pointer;
-  background-color: var(--white-opacity--10); /* Subtle background */
-  border: 1px solid var(--primary-light);
-  border-radius: 100px; /* Consistent with .primary-button */
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 12px; /* medium-uppercase-xs */
-  font-weight: 500;
-  text-transform: uppercase;
-  color: var(--primary);
-  transition: background-color 0.25s cubic-bezier(.39, .575, .565, 1), color 0.25s cubic-bezier(.39, .575, .565, 1), border-color 0.25s cubic-bezier(.39, .575, .565, 1);
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.tab-button:hover:not(.active) {
-  background-color: var(--white-opacity--20);
-  color: var(--primary-light);
-  border-color: var(--primary);
-}
-
-.tab-button.active {
-  background-color: var(--primary);
-  color: var(--white);
-  border-color: var(--primary);
-}
-
-.tab-content {
-  /* Container for all tab panes */
-}
-
-.tab-pane {
-  display: none;
-}
-
-.tab-pane.active {
-  display: block; /* The .services-grid inside will handle its own display:grid */
-}
-
-/* Ensure videos within service cards behave well and fill the card bg */
-.service-card .service-card-background video.service-card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cover the area, may crop slightly */
-    position: absolute; /* Ensure it's positioned like the images */
-    top: 0;
-    left: 0;
-    z-index: 1; /* Same as .service-card-image for images */
-}
-
-/* Ensure linear gradient is above video/image in service cards */
-.service-card .service-card-background .service-card-linear {
-    z-index: 2;
 }
 
 .w-list-unstyled {
@@ -1693,7 +1628,6 @@ textarea.w-input, textarea.w-select {
   overflow: hidden;
 }
 
-
 @media (min-width: 768px) {
   .w-lightbox-content {
     height: 96vh;
@@ -1991,18 +1925,6 @@ textarea.w-input, textarea.w-select {
   position: static;
 }
 
-/* Webflow force outline none style */
-.wf-force-outline-none[tabindex="-1"]:focus {
-  outline: none;
-}
-
-/* Font smoothing for body */
-body {
-  -webkit-font-smoothing: antialiased; 
-  -moz-font-smoothing: antialiased; 
-  -o-font-smoothing: antialiased;
-}
-
 @media screen and (max-width: 991px) {
   .w-nav[data-collapse="medium"] .w-nav-menu {
     display: none;
@@ -2121,6 +2043,14 @@ body {
 
 .wf-layout-layout {
   display: grid;
+}
+
+.w-code-component > * {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 :root {
@@ -2285,8 +2215,8 @@ img {
 }
 
 .logo-symbol {
-  width: 18px;
-  height: 18px;
+  width: 11px;
+  height: 11px;
 }
 
 .medium-uppercase-m {
@@ -2537,12 +2467,6 @@ img {
   background-color: #f2f2f200;
 }
 
-.testimonial_wrapper {
-  display: flex;
-  flex-flow: column;
-  gap: 8px;
-}
-
 .button-text-wrapper {
   perspective: 250px;
   flex-flow: column;
@@ -2558,12 +2482,7 @@ img {
   border-radius: 8px;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
 }
-
-
 
 .hero-lines-grid {
   z-index: 0;
@@ -2766,10 +2685,6 @@ img {
   position: absolute;
   inset: auto 4px 4px auto;
   transform: rotate(180deg);
-}
-
-.section.section-top-padding-small {
-  padding-top: 80px;
 }
 
 .section-top-padding {
@@ -3182,7 +3097,6 @@ img {
   -webkit-user-select: none;
   user-select: none;
   padding-bottom: 4px;
-  margin-top: 100px;
 }
 
 .footer-block {
@@ -3191,7 +3105,9 @@ img {
   background-color: var(--white);
   border-radius: 8px;
   flex-flow: column;
-  padding: 32px 24px;
+  padding-top: 32px;
+  padding-left: 24px;
+  padding-right: 24px;
   display: flex;
   position: relative;
 }
@@ -3837,20 +3753,13 @@ img {
 }
 
 .services-grid {
-  grid-column-gap: 4px; /* Reduced gap */
-  grid-row-gap: 4px; /* Reduced gap */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* At least 300px for desktop */
-  grid-auto-rows: minmax(min-content, max-content);
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
+  flex-flow: column;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
   display: grid;
-  align-items: center;
-}
-
-@media screen and (max-width: 767px) {
-  .services-grid {
-    grid-column-gap: 1px; /* Further reduced gap for mobile */
-    grid-row-gap: 1px;
-    grid-template-columns: 1fr;
-  }
 }
 
 .block-header {
@@ -3868,18 +3777,27 @@ img {
 }
 
 .service-card {
-  background-color: var(--secondary-light);
-  border: 1px solid var(--black-opacity-7);
-  border-radius: 12px;
-  /* flex-direction: column; */ /* Overridden by display: block or managed by grid */
-  /* justify-content: space-between; */ /* Overridden */
-  padding: 12px; /* Reduced padding for smaller cards */
-  /* display: flex; */ /* Changed to block or let grid item behave by default */
-  display: block; /* Simpler for auto height based on content */
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: var(--white-opacity--20);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: var(--white-opacity--20);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--white-opacity--20);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: var(--white-opacity--20);
+  -webkit-user-select: none;
+  user-select: none;
+  border-radius: 8px;
+  flex-flow: column;
+  height: 560px;
+  padding: 64px 24px;
+  display: flex;
   position: relative;
-  overflow: hidden; /* Keep if rounded corners are desired and content might bleed */
-  break-inside: avoid-column; /* For multi-column layouts, might help if grid behaves like columns */
-  height: fit-content; /* Ensure card height fits content */
+  overflow: hidden;
 }
 
 .service-card-content {
@@ -3913,21 +3831,20 @@ img {
 }
 
 .service-card-background {
-  /* z-index: 1; */ /* z-index without position can be tricky, let's re-evaluate if needed */
-  position: relative; /* WAS absolute */
+  z-index: 1;
   width: 100%;
-  height: auto; /* WAS 100% - Let content dictate height */
-  display: block; /* Ensure it takes block space */
+  height: 100%;
+  position: absolute;
+  inset: 0%;
 }
 
-.service-card-image { /* Ensure this applies to images within .service-card */
-  display: block;
+.service-card-image {
+  z-index: 1;
+  object-fit: cover;
   width: 100%;
-  height: auto; /* Crucial for aspect ratio */
-  max-width: 100%;
-  border-radius: 6px; /* If cards have padding and image should have its own rounding */
-  object-fit: cover; /* Or contain, depending on desired cropping/fitting */
-  /* Remove any existing filter or transform properties if they were here */
+  height: 100%;
+  position: absolute;
+  inset: 0%;
 }
 
 .service-card-linear {
@@ -4033,7 +3950,7 @@ img {
 .input.select {
   -webkit-appearance: none;
   appearance: none;
-  background-image: url("https://cdn.prod.website-files.com/681e5b5d510f92f5bc6ad518/681e5b5d510f92f5bc6ad59b_Chevron%20Down.svg");
+  background-image: url("https://cdn.prod.website-files.com/66e2098b30674f8759b7a0c8/66e2098b30674f8759b7a13b_Chevron%20Down.svg");
   background-position: 96%;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -4668,9 +4585,9 @@ img {
   }
 
   .service-card {
-    /* height: 480px; */
-    /* padding-top: 48px; */
-    /* padding-bottom: 48px; */
+    height: 480px;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 
   .icon-32-tablet-28 {
@@ -4851,7 +4768,7 @@ img {
   }
 
   .project-item, .project-item:nth-child(2n) {
-    flex-flow: column-reverse;
+    flex-flow: column;
   }
 
   .project-info-card {
@@ -5127,10 +5044,6 @@ img {
     align-items: stretch;
   }
 
-  .section.section-top-padding-small {
-    padding-top: 80px;
-  }
-
   .wrapper.project-hero-button {
     flex-flow: column;
     display: flex;
@@ -5164,7 +5077,7 @@ img {
   }
 }
 
-#w-node-eeada652-cbc8-2cf5-b94d-53cd328de67e-bc6ad556, #w-node-_525a0b52-4ca3-38fc-57ae-3b754682f733-4682f722, #w-node-_23a7c60c-9803-08eb-a25b-f284b211af2a-b211af21, #w-node-_23a7c60c-9803-08eb-a25b-f284b211af2b-b211af21 {
+#w-node-eeada652-cbc8-2cf5-b94d-53cd328de67e-59b7a0bc, #w-node-_525a0b52-4ca3-38fc-57ae-3b754682f733-4682f722, #w-node-_23a7c60c-9803-08eb-a25b-f284b211af2a-b211af21, #w-node-_23a7c60c-9803-08eb-a25b-f284b211af2b-b211af21 {
   grid-area: span 1 / span 3 / span 1 / span 3;
 }
 
@@ -5172,63 +5085,84 @@ img {
   grid-area: span 1 / span 2 / span 1 / span 2;
 }
 
-#w-node-cc9666d2-5229-804a-f11a-2eb715ea61ea-bc6ad55c {
+#w-node-_2121e502-e0e4-33ea-5aa7-0820802c265d-59b7a0bd, #w-node-f06b96a5-4e14-24bb-ca68-590b0a547799-59b7a0be, #w-node-_92c0b60c-7a13-48b8-4af1-e642b3c8426b-59b7a0bf, #w-node-b5049164-82d4-40f4-05cf-47be9e17a810-59b7a0c0, #w-node-_11e2e3b6-dd4a-dc6a-17a3-e98bf209c7c6-59b7a0c0, #w-node-bfe70dac-52f1-3200-1a65-f108f4aab8df-59b7a0c1 {
   grid-area: span 1 / span 3 / span 1 / span 3;
 }
 
+#w-node-bfe70dac-52f1-3200-1a65-f108f4aab8e1-59b7a0c1 {
+  align-self: end;
+}
+
+#w-node-cc9666d2-5229-804a-f11a-2eb715ea61ea-59b7a0c2, #w-node-_9cbd576a-3b70-da8a-8779-23f80f234f82-59b7a0c4 {
+  grid-area: span 1 / span 3 / span 1 / span 3;
+}
+
+#w-node-_9cbd576a-3b70-da8a-8779-23f80f234f84-59b7a0c4 {
+  align-self: end;
+}
+
+#w-node-ad7f3a46-0983-242d-716a-4417fb0d98f7-59b7a0c5 {
+  grid-area: span 1 / span 3 / span 1 / span 3;
+}
+
+#w-node-ad7f3a46-0983-242d-716a-4417fb0d98fb-59b7a0c5 {
+  align-self: end;
+}
+
+#w-node-_1b573886-29b3-2f30-28d6-99bc5ed1dd75-59b7a0c6 {
+  grid-area: span 1 / span 3 / span 1 / span 3;
+}
+
+#w-node-_1b573886-29b3-2f30-28d6-99bc5ed1dd79-59b7a0c6 {
+  align-self: end;
+}
+
 @media screen and (max-width: 991px) {
-  #w-node-_525a0b52-4ca3-38fc-57ae-3b754682f727-4682f722 {
+  #w-node-_525a0b52-4ca3-38fc-57ae-3b754682f727-4682f722, #w-node-_11e2e3b6-dd4a-dc6a-17a3-e98bf209c7c6-59b7a0c0 {
+    grid-area: span 1 / span 2 / span 1 / span 2;
+  }
+
+  #w-node-_0a4fca7b-2a40-e7f6-5be3-2de3c7a84bc1-59b7a0c6, #w-node-d74096d4-93e5-0a87-41eb-68764d0afbe9-59b7a0c6 {
+    grid-area: span 1 / span 3 / span 1 / span 3;
+  }
+
+  #w-node-_121abfac-80c5-3f04-fd17-b8e676e35d76-59b7a0c6 {
+    grid-area: span 1 / span 6 / span 1 / span 6;
+  }
+
+  #w-node-_0fc20a1c-c3e8-8746-eda7-6d3a1c1c8017-59b7a0c6, #w-node-_8bf0fa38-2720-109d-8d6e-bd05a426dfda-59b7a0c6, #w-node-_7d740268-8946-c80f-a445-9af895345271-59b7a0c6 {
+    grid-area: span 1 / span 2 / span 1 / span 2;
+  }
+
+  #w-node-_0e352b24-0cb3-9ec9-2363-4449e1664faa-59b7a0c6, #w-node-_214f5c32-31c5-d7c5-2d57-e031a0b288bc-59b7a0c6 {
+    grid-area: span 1 / span 3 / span 1 / span 3;
+  }
+
+  #w-node-_08a7be88-4dda-fa19-9a77-5c54e85f2cd3-59b7a0c6, #w-node-_2b9df953-8271-ccf9-5156-b532ca9c37ba-59b7a0c6, #w-node-a7e4599a-a721-4c54-ffc9-ee75fb4a287b-59b7a0c6 {
     grid-area: span 1 / span 2 / span 1 / span 2;
   }
 }
 
-/* Video container (.about-video-block) within cards */
-.service-card .service-card-background .about-video-block.w-background-video {
-  position: relative; /* Ensure it's not absolute from Webflow's base styles if service-card-background is now relative */
-  width: 100%;
-  height: auto;   /* Override Webflow's default 500px and allow content to define height */
-  display: block; /* Ensure it is treated as a block */
+@media screen and (max-width: 767px) {
+  #w-node-_11e2e3b6-dd4a-dc6a-17a3-e98bf209c7c6-59b7a0c0 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+  }
 }
 
-/* Video tag itself within cards */
-.service-card .service-card-background .about-video-block.w-background-video > video {
-  position: relative; /* WAS absolute */
-  display: block;     /* Make it block */
-  width: 100%;
-  height: auto;       /* Key change: allow video aspect ratio to determine height */
-  object-fit: cover;  /* Consistent styling */
-  top: auto;          /* Reset absolute positioning helper */
-  left: auto;         /* Reset absolute positioning helper */
-  /* inset: auto; /* Reset from Webflow if it was there */
-  /* z-index might not be needed here anymore */
-}
+@media screen and (max-width: 479px) {
+  #w-node-_0a4fca7b-2a40-e7f6-5be3-2de3c7a84bc1-59b7a0c6, #w-node-d74096d4-93e5-0a87-41eb-68764d0afbe9-59b7a0c6 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+  }
 
-.client-photo-img {
-  width: 60px;
-  height: 60px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  margin-right: 12px;
-  display: inline-block;
-  vertical-align: middle;
-  flex-shrink: 0;
-}
+  #w-node-_121abfac-80c5-3f04-fd17-b8e676e35d76-59b7a0c6, #w-node-_0fc20a1c-c3e8-8746-eda7-6d3a1c1c8017-59b7a0c6 {
+    grid-area: span 1 / span 2 / span 1 / span 2;
+  }
 
-.client_photo {
-  display: inline-block;
-  vertical-align: middle;
-  width: 60px;
-  height: 60px;
-  min-width: 60px;
-  min-height: 60px;
-}
+  #w-node-_8bf0fa38-2720-109d-8d6e-bd05a426dfda-59b7a0c6, #w-node-_7d740268-8946-c80f-a445-9af895345271-59b7a0c6, #w-node-_0e352b24-0cb3-9ec9-2363-4449e1664faa-59b7a0c6, #w-node-_214f5c32-31c5-d7c5-2d57-e031a0b288bc-59b7a0c6, #w-node-_08a7be88-4dda-fa19-9a77-5c54e85f2cd3-59b7a0c6, #w-node-_2b9df953-8271-ccf9-5156-b532ca9c37ba-59b7a0c6 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+  }
 
-.testimonial_wrapper_text {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
+  #w-node-a7e4599a-a721-4c54-ffc9-ee75fb4a287b-59b7a0c6 {
+    grid-area: span 1 / span 2 / span 1 / span 2;
+  }
 }
