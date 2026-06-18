@@ -36,6 +36,11 @@ expect(!html.includes("intro-line"), "Eyebrow element should be removed");
 expect(!css.includes("intro-line"), "Eyebrow CSS should be removed");
 
 expect(
+  html.includes("<title>Hiro Labs - Scale your video production</title>"),
+  "Page title should match the requested Hiro Labs title"
+);
+
+expect(
   normalizedHtml.includes(
     "For businesses that need to ship on-brand videos, faster."
   ),
