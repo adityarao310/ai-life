@@ -86,7 +86,7 @@ if (heroActions) {
   expect(actions[0]?.html.includes("action-pill-primary"), "See our work should be primary");
   expect(
     actions[0]?.html.includes(
-      "https://docs.google.com/presentation/d/1nSvkpu-L6Xx4EZSp-5kbrq6S6OgK4lolzoJGo22eMV8/present?slide=id.p"
+      "https://docs.google.com/presentation/d/e/2PACX-1vQEF5UT96eRZYg6ajkmgODOXTax4UsARUxdrByEbkUnnPuE-IxtbBcwUHCwl6VVsKKn3NCQ0emS_eNA/pub?start=true&loop=false&delayms=30000"
     ),
     "See our work should link to the slideshow"
   );
