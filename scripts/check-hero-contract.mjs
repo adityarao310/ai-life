@@ -160,6 +160,38 @@ expect(css.includes(".client-logo.is-loop-clone"), "Mobile logo loop clone CSS s
 expect(html.includes("function bindClientLogoLoop()"), "Mobile logo loop JS should be present");
 expect(html.includes("clientLogos.scrollLeft -= loopWidth"), "Mobile logo loop should reset at the seam");
 expect(!normalizedHtml.toLowerCase().includes("goldiam"), "Goldiam should not be referenced");
+expect(
+  html.includes("function bindVideoScrub()"),
+  "Hero video scrub JS should be present"
+);
+expect(
+  html.includes("const runStartupLogoCue = () =>"),
+  "Hero video should run a startup logo-facing cue"
+);
+expect(
+  html.includes("let startupCueStarted = false;"),
+  "Startup video cue should only run once"
+);
+expect(
+  html.includes("const logoLookTime = clampTarget(video.duration * 0.82);"),
+  "Startup video cue should target the logo-facing part of the clip"
+);
+expect(
+  html.includes("const cancelStartupCue = () =>"),
+  "Startup video cue should be cancellable"
+);
+expect(
+  html.includes("cancelStartupCue();"),
+  "User pointer or touch movement should cancel the startup cue"
+);
+expect(
+  html.includes("video.readyState >= HTMLMediaElement.HAVE_METADATA"),
+  "Startup video cue should run even when metadata loaded before listeners attach"
+);
+expect(
+  html.includes("prefers-reduced-motion: reduce"),
+  "Startup video cue should respect reduced motion"
+);
 
 const subheading = cssBlock(".hero-subheading");
 const heroActionsCss = cssBlock(".hero-actions");

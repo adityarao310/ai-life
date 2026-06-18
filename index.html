@@ -369,8 +369,15 @@
         let previousX = null;
         let targetTime = 0;
         let seeking = false;
+        let startupCueActive = false;
+        let startupCueStarted = false;
+        let startupCueFrame = 0;
+        let startupOriginalPlaybackRate = 1;
         const mouseSensitivity = 0.8;
         const touchSensitivity = 0.35;
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
 
         const clampTarget = (time) => {
           const duration = Number.isFinite(video.duration) ? video.duration : 0;
@@ -386,7 +393,112 @@
           video.currentTime = clampTarget(targetTime);
         };
 
+        const moveVideoTarget = (nextTime) => {
+          targetTime = clampTarget(nextTime);
+
+          if (!seeking) {
+            seekToTarget();
+          }
+        };
+
+        const cancelStartupCue = () => {
+          if (!startupCueActive) {
+            return;
+          }
+
+          startupCueActive = false;
+          window.cancelAnimationFrame(startupCueFrame);
+          video.pause();
+          video.playbackRate = startupOriginalPlaybackRate;
+          targetTime = clampTarget(video.currentTime);
+          seeking = false;
+        };
+
+        const runStartupLogoCue = () => {
+          if (
+            reduceMotion ||
+            startupCueActive ||
+            startupCueStarted ||
+            !Number.isFinite(video.duration) ||
+            video.duration <= 0
+          ) {
+            return;
+          }
+
+          const startTime = clampTarget(video.duration * 0.04);
+          const logoLookTime = clampTarget(video.duration * 0.82);
+          const cueDuration = 1800;
+          const cueRate = Math.min(
+            Math.max((logoLookTime - startTime) / (cueDuration / 1000), 1),
+            2.4
+          );
+          let startedAt = 0;
+
+          startupCueActive = true;
+          startupCueStarted = true;
+          startupOriginalPlaybackRate = video.playbackRate || 1;
+          previousX = null;
+          targetTime = startTime;
+          video.currentTime = startTime;
+          video.playbackRate = cueRate;
+
+          const finishStartupCue = () => {
+            if (!startupCueActive) {
+              return;
+            }
+
+            startupCueActive = false;
+            video.pause();
+            video.playbackRate = startupOriginalPlaybackRate;
+            targetTime = clampTarget(
+              video.currentTime >= logoLookTime * 0.72
+                ? video.currentTime
+                : logoLookTime
+            );
+
+            if (Math.abs(video.currentTime - targetTime) > 1 / 30) {
+              moveVideoTarget(targetTime);
+            }
+          };
+
+          const step = (timestamp) => {
+            if (!startupCueActive) {
+              return;
+            }
+
+            if (!startedAt) {
+              startedAt = timestamp;
+            }
+
+            const elapsed = timestamp - startedAt;
+
+            if (elapsed >= cueDuration || video.currentTime >= logoLookTime) {
+              finishStartupCue();
+              return;
+            }
+
+            startupCueFrame = window.requestAnimationFrame(step);
+          };
+
+          const playPromise = video.play();
+
+          if (playPromise?.catch) {
+            playPromise.catch(() => {
+              if (!startupCueActive) {
+                return;
+              }
+
+              moveVideoTarget(logoLookTime);
+              window.setTimeout(finishStartupCue, cueDuration);
+            });
+          }
+
+          startupCueFrame = window.requestAnimationFrame(step);
+        };
+
         const scrubFromClientX = (clientX, sensitivity) => {
+          cancelStartupCue();
+
           if (!Number.isFinite(video.duration) || video.duration <= 0) {
             previousX = clientX;
             return;
@@ -399,14 +511,10 @@
 
           const delta = clientX - previousX;
           previousX = clientX;
-          targetTime = clampTarget(
+          moveVideoTarget(
             targetTime +
               (delta / window.innerWidth) * sensitivity * video.duration
           );
-
-          if (!seeking) {
-            seekToTarget();
-          }
         };
 
         const handleMouseMove = (event) => {
@@ -435,7 +543,13 @@
 
         video.addEventListener("loadedmetadata", () => {
           targetTime = video.currentTime;
+          runStartupLogoCue();
         });
+
+        if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+          targetTime = video.currentTime;
+          runStartupLogoCue();
+        }
 
         video.addEventListener("seeked", () => {
           const hasMoved = Math.abs(video.currentTime - targetTime) > 1 / 30;
