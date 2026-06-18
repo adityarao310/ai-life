@@ -5,6 +5,7 @@ const css = readFileSync(
   new URL("../assets/styles.css", import.meta.url),
   "utf8"
 );
+const cname = readFileSync(new URL("../CNAME", import.meta.url), "utf8").trim();
 const normalizedHtml = html.replace(/\s+/g, " ");
 
 const failures = [];
@@ -34,6 +35,7 @@ expect(
 );
 expect(!html.includes("intro-line"), "Eyebrow element should be removed");
 expect(!css.includes("intro-line"), "Eyebrow CSS should be removed");
+expect(cname === "hirogi.com", "CNAME should point at the current production domain");
 
 expect(
   html.includes("<title>Hiro Labs - Scale your video production</title>"),
@@ -173,6 +175,16 @@ expect(css.includes(".hero-section::before"), "Mobile readability layer should b
 expect(css.includes("height: 44vh"), "Mobile readability layer should cover the lower copy area");
 expect(css.includes("gap: 8px"), "Mobile logo rail should use tighter spacing");
 expect(css.includes("black 92%"), "Mobile logo rail fade should leave four logos readable");
+expect(css.includes("100dvh"), "Hero should use dynamic viewport height for mobile browsers");
+expect(css.includes("overflow-y: auto"), "Mobile layout should allow vertical scroll fallback");
+expect(
+  css.includes("calc(92px + env(safe-area-inset-bottom))"),
+  "Mobile hero should reserve enough bottom space for the CTA row"
+);
+expect(
+  css.includes("@media (max-width: 767px) and (max-height: 720px)"),
+  "Short mobile viewport adjustments should be present"
+);
 
 if (failures.length) {
   console.error("Hero contract failed:");
