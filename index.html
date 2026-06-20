@@ -401,6 +401,9 @@
           }
         };
 
+        const targetVideoTimeFromClientX = (clientX) =>
+          clampTarget((clientX / window.innerWidth) * video.duration);
+
         const cancelStartupCue = () => {
           if (!startupCueActive) {
             return;
@@ -517,14 +520,47 @@
           );
         };
 
+        const scrubToClientX = (clientX) => {
+          cancelStartupCue();
+
+          if (!Number.isFinite(video.duration) || video.duration <= 0) {
+            previousX = clientX;
+            return;
+          }
+
+          previousX = clientX;
+          moveVideoTarget(targetVideoTimeFromClientX(clientX));
+        };
+
         const handleMouseMove = (event) => {
           scrubFromClientX(event.clientX, mouseSensitivity);
         };
 
+        const handlePointerDown = (event) => {
+          if (event.pointerType !== "touch") {
+            return;
+          }
+
+          scrubToClientX(event.clientX);
+        };
+
         const handlePointerMove = (event) => {
-          const sensitivity =
-            event.pointerType === "touch" ? touchSensitivity : mouseSensitivity;
-          scrubFromClientX(event.clientX, sensitivity);
+          if (event.pointerType === "touch") {
+            scrubToClientX(event.clientX);
+            return;
+          }
+
+          scrubFromClientX(event.clientX, mouseSensitivity);
+        };
+
+        const handleTouchStart = (event) => {
+          const touch = event.touches[0];
+
+          if (!touch) {
+            return;
+          }
+
+          scrubToClientX(touch.clientX);
         };
 
         const handleTouchMove = (event) => {
@@ -534,7 +570,7 @@
             return;
           }
 
-          scrubFromClientX(touch.clientX, touchSensitivity);
+          scrubToClientX(touch.clientX);
         };
 
         const resetScrub = () => {
@@ -563,6 +599,9 @@
         });
 
         if ("PointerEvent" in window) {
+          window.addEventListener("pointerdown", handlePointerDown, {
+            passive: true,
+          });
           window.addEventListener("pointermove", handlePointerMove, {
             passive: true,
           });
@@ -572,6 +611,9 @@
           });
         } else {
           window.addEventListener("mousemove", handleMouseMove);
+          window.addEventListener("touchstart", handleTouchStart, {
+            passive: true,
+          });
           window.addEventListener("touchmove", handleTouchMove, {
             passive: true,
           });

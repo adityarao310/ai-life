@@ -185,6 +185,30 @@ expect(
   "User pointer or touch movement should cancel the startup cue"
 );
 expect(
+  html.includes("const targetVideoTimeFromClientX = (clientX) =>"),
+  "Mobile touch should map the touched screen position directly to a video time"
+);
+expect(
+  html.includes("(clientX / window.innerWidth) * video.duration"),
+  "Mobile touch position should be based on screen width, not finger movement delta"
+);
+expect(
+  html.includes("const handleTouchStart = (event) =>"),
+  "Mobile touch should move the monitor head on the first touch, before touchmove"
+);
+expect(
+  html.includes('window.addEventListener("touchstart", handleTouchStart'),
+  "Non-pointer mobile browsers should bind touchstart for first-touch tracking"
+);
+expect(
+  html.includes("const handlePointerDown = (event) =>"),
+  "Pointer-capable mobile browsers should bind first-touch tracking"
+);
+expect(
+  html.includes('window.addEventListener("pointerdown", handlePointerDown'),
+  "Pointer-capable mobile browsers should move the monitor head on touch pointerdown"
+);
+expect(
   html.includes("video.readyState >= HTMLMediaElement.HAVE_METADATA"),
   "Startup video cue should run even when metadata loaded before listeners attach"
 );
